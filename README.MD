@@ -2,7 +2,6 @@
 
 <img src="image/logo_flat.png" alt = "Logo" style= "display: block; margin-left:0; margin-right:auto; width:100%;"/>
 
-#
 ## Introduction
 
 We develop Omni*UV*, so as to fulfill the requirement of simulation for both ground and space VLBI observations. 
@@ -32,13 +31,11 @@ Omni*UV* supports two types of calculation methods for visibility simulation and
     - Suitable for small field;
     - *w* term cannot be taken into account;
     - Artifacts are introduced during gridding.
-##
 - Direct summation: direct calculation via Eq. 3 and 6 in the paper.
     - Slow, therefore requiring GPU speedup;
     - Suitable for wide field;
     - w* term is naturally supported;
     - No gridding artifact.
 
-
-
+Edited from github.
 
