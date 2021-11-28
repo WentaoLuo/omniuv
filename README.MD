@@ -24,7 +24,7 @@ The main functionalities of the toolkit are:
 - Visibility simulation for the given *uv* distribution, source structure and system noise;
 - Beam and image reconstruction.
 
-Omni*UV* supports two types of calculation methods for visibility simulation and imaging (taking img -> vis for example):
+Omni*UV* supports two types of methods for visibility simulation and imaging (taking img -> vis for example):
 
 - FFT: point sources are first assigned to the nearby grids in the image plane via certain kind of assignment function, then FFTed to the *uv* plane. Visibilities are reconstructed at given *uv* position via interpolation (assignment) function. 
     - Fast, therefore popular;
@@ -36,6 +36,4 @@ Omni*UV* supports two types of calculation methods for visibility simulation and
     - Suitable for wide field;
     - w* term is naturally supported;
     - No gridding artifact.
-
-Edited from github.
 
