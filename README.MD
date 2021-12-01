@@ -37,8 +37,13 @@ Omni*UV* supports two types of methods for visibility calculation and imaging (t
     - w* term is naturally supported;
     - No gridding artifact.
 
-## Installation
+## Prerequisite
 
+- Linux system
+- Any version of Python 3.6, 3.7, 3.8, 3.9.
+
+## Installation
+ 
 - The toolkit is provided as precompiled package (`pyc` files). Please select the appropriate Python version and unpack. If you are not sure your Python version, please run the following command:
 
     `python --version`
