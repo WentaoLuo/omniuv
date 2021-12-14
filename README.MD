@@ -27,8 +27,40 @@ Omni*UV* supports two types of methods for visibility and imaging calculation (t
 - **Direct summation**: direct calculation via Eq. 3 and 6 in the paper.
     - Slow, therefore requiring GPU speedup;
     - Suitable for wide field;
-    - w* term is naturally supported;
+    - *w* term is naturally supported;
     - No gridding artifact.
+
+---
+
+### **Source**
+A Source in Omni*UV* actually refers to a **phase center**.
+
+Omni*UV* supports _uvw_ calculations for multiple sources (phase centers). For each source, the input _ra_ and _dec_ are first converted to a unit vector in CRS: 
+
+__s0__ = (_x_, _y_, _z_)
+
+with:
+
+_x_ = cos(_dec_) * cos(_ra_)
+
+_y_ = cos(_dec_) * cos(_ra_)
+
+_z_ = sin(_dec_)
+
+The defination of the _uvw_ system follows that in the standard textbook (Thompson et al. 2001):
+
+Given North Pole direction __n__ = (0, 0, 1) and source direction __s0__, __w__ is in the same direction as __s0__:
+
+__w__ = __s0__,
+
+ __u__ is the direction perpendicularto the plane defined by __n__ and __w__:
+
+__u__ = __n__ x __w__,
+
+
+__v__ is defined accordingly:
+
+__v__ = __w__ x __u__.
 
 ---
 
@@ -44,47 +76,22 @@ Omni*UV* supports the following types of ground and space stations:
 
 <img src="image/dataflow.png" alt = "dataflow" style= "display: block; margin-left:0; margin-right:auto; width:100%;"/>
 
-The trajectories of stations are first calculated in ther own coordinate system, and then tranformed to the **Celestial Reference System (CRS)**. After that the station $uvw$ is calculated. The baseline $uvw$ is formed accordingly.
+The trajectories of stations are first calculated in ther own coordinate system, and then tranformed to the **Celestial Reference System (CRS)**. 
 
----
+The station _uvw_ is the projection of CRS position __p__ in the $uvw$ system defined above: 
 
-### **Source**
-A Source in Omni*UV* actually refers to a **phase center**.
+(_u_, _v_, _w_) = (__u__, __v__, __w__) __·__ __p__.
 
-Omni*UV* supports $uvw$ calculations for multiple sources (phase centers). For each source, the input R.A. ($\alpha$) and decl. ($\delta$) are first converted to a unit vector in CRS: 
-
-$\vec{s}=(x, y, z)$,
-
-with:
-
-$x=\cos\delta\cos\alpha$
-
-$y=\cos\delta\sin\alpha$
-
-$z=\sin\delta$
-
-The defination of the $uvw$ system follows that in the standard textbook (Thompson et al. 2001):
-
-Given North Pole direction $\vec{n}$ and source direction $\vec{s}$, $w$ is the same direction as $\vec{s}$:
-
-$\vec{w}=\vec{s}$,
-
- $\vec{u}$ is the direction perpendicularto the plane defined by $\vec{n}$ and $\vec{w}$:
-
-$\vec{u}$ = $\vec{n}\times \vec{w}$,
-
-$\vec{v}$ is defined accordingly:
-
-$\vec{v} = \vec{w}\times\vec{u}$.
-
-The station $uvw$ is the projection of position $\vec{p}$ in the system defined above: 
-
-$(u, v, w) = \vec{p}\cdot(\vec{u}, \vec{v}, \vec{w})$.
+The baseline _uvw_ is formed accordingly, by taking the station availability in each moment into account.
 
 ---
 
 ### **Image**
 Visibility simulation requires an image as input. An image is binded to a source, and is described as a list of pixels (point sources). For each pixel, one has to provide the corresponding coordinate and flux. See `run_example.py` for a detailed example.
+
+The _lmn_ of each pixel is the projection of the pixel position __s__ in the _uvw_ system defined above:
+
+(_l_, _m_, _n_) = (__u__, __v__, __w__) __·__ __s__.
 
 ---
 
