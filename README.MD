@@ -103,19 +103,33 @@ The _lmn_ of each pixel is the projection of the pixel position __s__ in the _uv
 ---
 
 ## **Installation**
- 
-- The toolkit is provided as precompiled package (`pyc` files). Please select the appropriate Python version and unpack. If you are not sure your Python version, please run the following command:
 
-    `python --version`
-
-- If you are in mainland China, please first run
+-   If you are in mainland China, please first run
 
     `sh pip_mirror.sh` 
   
     to select the pip host provided by aliyun.
 
-- Install dependences:
+-   Install dependences:
 
     `pip install -r requirements.txt`
+ 
+-   The toolkit is provided as **precompiled package**. Please import the package of the corresponding Python version. E.g., if you are using Python 3.9.5, then add the following line at the beginning of your source code:
 
-    Then the toolkit is ready.
+    `from omniuv_py39 import *`
+    
+    If you are not sure your Python version, please run the following command:
+
+    `python --version`
+
+    to figure out. 
+
+-   If your code and the pacakge are not in the same folder, you have to speficy the path that contains the package before importing the package. See `run_example.py` for an explanation.
+
+## **Example**
+    
+### `run_example.py`
+- Due to the complexity of VLBI simulation, Omni*UV* is not intented and is not possible to be used as a black box. A comprehensive explanation for the usage of Omni*UV* is presented in this program. Please read it carefully.
+
+### `tool.py` 
+- Functions for plotting the uv, beam and image. Now the displayed unit is milliarcsec (mas), you may change them to other units by modifying the source code.

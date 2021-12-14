@@ -5,8 +5,13 @@ import numpy as np
 from datetime import datetime
 from tool import *
 
-sys.path.append('.')
-from py39 import *
+# Specify the path that contains the omniuv package. 
+# Necessary when your source code and the pacakge are not in the same
+# folder.
+#sys.path.append('.')
+
+# Import the specific OmniUV package according to YOUR Python version
+from omniuv_py39 import * 
 
 with_moon   =   True
 
