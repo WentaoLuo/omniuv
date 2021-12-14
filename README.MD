@@ -1,5 +1,5 @@
 # Omni*UV*: An Omnipotent VLBI Simulation Toolkit
-<img src="image/logo_flat.png" alt = "Logo" style= "display: block; margin-left:0; margin-right:auto; width:100%;"/>
+<img src="data/logo_flat.png" alt = "Logo" style= "display: block; margin-left:0; margin-right:auto; width:100%;"/>
 
 ---
 
@@ -72,13 +72,13 @@ Omni*UV* supports the following types of ground and space stations:
 - Moon fixed;
 - Moon orbit;
 - Earth-Sun Lagrange 1/2 points; 
-- Earth-Moon lagrange 1/2 points.
+- Earth-Moon Lagrange 1/2 points.
 
-<img src="image/dataflow.png" alt = "dataflow" style= "display: block; margin-left:0; margin-right:auto; width:100%;"/>
+<img src="data/dataflow.png" alt = "dataflow" style= "display: block; margin-left:0; margin-right:auto; width:100%;"/>
 
 The trajectories of stations are first calculated in ther own coordinate system, and then tranformed to the **Celestial Reference System (CRS)**. 
 
-The station _uvw_ is the projection of CRS position __p__ in the $uvw$ system defined above: 
+The station _uvw_ is the projection of CRS position __p__ in the _uvw_ system defined above: 
 
 (_u_, _v_, _w_) = (__u__, __v__, __w__) __·__ __p__.
 
